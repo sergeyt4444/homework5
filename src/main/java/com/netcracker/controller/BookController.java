@@ -100,7 +100,7 @@ public class BookController {
                 .map(bookRes -> {
                     bookRes.setPrice(book.getPrice());
                     bookRes.setQuantity(book.getQuantity());
-                    bookRes.setStored_at(book.getStored_at());
+                    bookRes.setStoredAt(book.getStoredAt());
                     return bookService.addBook(bookRes);
                 })
                 .orElseGet(() -> {

@@ -15,7 +15,9 @@ public class Book {
 
     private String name;
     private int price;
-    private String stored_at;
+
+    @Column(name = "stored_at")
+    private String storedAt;
     private int quantity;
 
 }
