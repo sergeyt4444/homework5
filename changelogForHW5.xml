@@ -1,0 +1,56 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="serge (generated)" id="1642195387580-1">
+        <createTable tableName="customer">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="customer_pkey"/>
+            </column>
+            <column name="last_name" type="VARCHAR(30)"/>
+            <column name="address" type="VARCHAR(100)"/>
+            <column name="discount" type="FLOAT8"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="serge (generated)" id="1642195387580-2">
+        <createTable tableName="book">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="book_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(40)"/>
+            <column name="price" type="INTEGER"/>
+            <column name="stored_at" type="VARCHAR(40)"/>
+            <column name="quantity" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="serge (generated)" id="1642195387580-3">
+        <createTable tableName="shop">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="shop_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(30)"/>
+            <column name="address" type="VARCHAR(150)"/>
+            <column name="commis" type="FLOAT8"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="serge (generated)" id="1642195387580-4">
+        <createTable tableName="purchase">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="purchase_pkey"/>
+            </column>
+            <column name="date" type="date"/>
+            <column name="seller_id" type="INTEGER"/>
+            <column name="buyer_id" type="INTEGER"/>
+            <column name="book_id" type="INTEGER"/>
+            <column name="num" type="INTEGER"/>
+            <column name="sum" type="FLOAT8"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="serge (generated)" id="1642195387580-5">
+        <addForeignKeyConstraint baseColumnNames="book_id" baseTableName="purchase" constraintName="fk_book" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="book" validate="true"/>
+    </changeSet>
+    <changeSet author="serge (generated)" id="1642195387580-6">
+        <addForeignKeyConstraint baseColumnNames="buyer_id" baseTableName="purchase" constraintName="fk_buyer" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="customer" validate="true"/>
+    </changeSet>
+    <changeSet author="serge (generated)" id="1642195387580-7">
+        <addForeignKeyConstraint baseColumnNames="seller_id" baseTableName="purchase" constraintName="fk_seller" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="shop" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
